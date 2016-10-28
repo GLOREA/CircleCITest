@@ -22,5 +22,5 @@ deployment:
     commands:
       - 'echo "+++++ Start Deploy +++++"'
       - './node_modules/.bin/gulp testTask'
-      - 'echo ls -lsa'
+      - 'ls -lsa'
       - 'echo "+++++ End Deploy +++++"'
