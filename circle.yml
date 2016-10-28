@@ -1,0 +1,25 @@
+machine:
+  timezone: Asia/Tokyo
+  node: 
+    version: 4.3
+
+dependencies:
+  # pre:
+    # npm install ...
+  # override:
+    # npm install ...
+
+test:
+  pre:
+    - echo "****** Start Test *****"
+  override:
+    - echo "test"
+  post:
+    - echo "****** End Text *****"
+
+deployment:
+  deploy:
+    branch: master
+    commands:
+      - echo "+++++ Start Deploy +++++"
+      - echo "+++++ End Deploy +++++"
