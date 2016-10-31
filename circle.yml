@@ -6,8 +6,8 @@ machine:
 dependencies:
   pre:
     - 'echo "npm install ..."'
-  override:
-    - 'echo "npm install ..."'
+  # override:
+    # - 'echo "npm install ..."'
 test:
   pre:
     - 'echo "****** Start Test *****"'
