@@ -21,6 +21,7 @@ deployment:
       master
     commands:
       - 'echo "+++++ Start Deploy +++++"'
-      - './node_modules/.bin/gulp testTask'
       - 'ls -lsa'
+      - 'ls -lsa ./node_modules/.bin/'
+      - './node_modules/.bin/gulp testTask'
       - 'echo "+++++ End Deploy +++++"'
