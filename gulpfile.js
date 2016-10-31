@@ -10,8 +10,7 @@ const region = process.env['AWS_REGION'];
 
 AWS.config.update({
 	accessKeyId: process.env['AWS_S3_ACCESS_KEY_ID'],
-	secretAccessKey: process.env['AWS_S3_SECRET_ACCESS_KEY'],
-	region: region
+	secretAccessKey: process.env['AWS_S3_SECRET_ACCESS_KEY']
 });
 
 gulp.task('testTask', (done)=> {
@@ -68,9 +67,7 @@ gulp.task('Archive', (done)=> {
 gulp.task('S3Upload', (done)=> {
 	const q = require('q');
 	var bucket = new AWS.S3({
-//		region: region,
-//		params: { Bucket: bucketName }
-		params: { region: region, Bucket: bucketName }
+		params: { Bucket: bucketName }
 	});
 
     // UpLoadの部分は、プロミスを利用しての並行処理をする必要がある
