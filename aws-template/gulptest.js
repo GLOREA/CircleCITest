@@ -6,7 +6,6 @@
 			"Type": "AWS::Lambda::Function",
 			"Properties": {
 				"Code": {
-					"S3Rigion": "ap-northeast-2",
 					"S3Bucket": "com.yamaha.ses.soil.dev",
 					"S3Key": "dest/lambda.zip"
 				},
