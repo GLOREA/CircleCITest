@@ -143,7 +143,7 @@ gulp.task('CloudFormation', (done)=> {
 		apiVersion: '2010-05-15',
 		region: region
 	});
-	cloudFormation.waitFor('stackExists', { StackName: stackName }, (err, data)=> {
+	cloudFormation.listStacks({}, (err, data)=> {
 		if(err){
 			console.log(err);
 			done();
