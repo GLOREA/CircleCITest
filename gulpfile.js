@@ -153,9 +153,12 @@ gulp.task('CloudFormation', (done)=> {
 			process.exit(1);
 		}else{
 			console.log(data);
-			// done();
+			var exists = data.some((element, index, array)=> {
+				return element.split('/')[1] == stackName;
+			});
+			console.log(exists);
 
-			return cloudFormation.createStack({
+			return cloudFormation[(exists ? 'updateStack': 'createStack')]({
 			// return cloudFormation.updateStack({
 				StackName: stackName,
 				// TODO: ローカルのテンプレートファイルを使う
