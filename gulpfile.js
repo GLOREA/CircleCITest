@@ -11,6 +11,7 @@ AWS.config.update({
 const bucketName = process.env['AWS_S3_BUCKET'];
 const gulpTempDir = process.env['GULP_TEMP_DIR'];
 const stackName = process.env['AWS_CLOUD_FORMATION_STACK'];
+const region = process.env['AWS_REGION'];
 
 gulp.task('testTask', (done)=> {
 	console.log(process.env);
@@ -140,7 +141,7 @@ const modifyCloudFormationTemplate = (filePath)=> {
 gulp.task('CloudFormation', (done)=> {
 	var cloudFormation = new AWS.CloudFormation({
 		apiVersion: '2010-05-15',
-		region: 'ap-northeast-1'
+		region: region
 	});
 	cloudFormation.waitFor('stackExists', { StackName: stackName }, (err, data)=> {
 		if(err){

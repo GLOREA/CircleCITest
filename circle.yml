@@ -26,4 +26,5 @@ deployment:
       - './node_modules/.bin/gulp testTask'
       - './node_modules/.bin/gulp Archive'
       - './node_modules/.bin/gulp S3Upload'
+      - './node_modules/.bin/gulp CloudFormation'
       - 'echo "+++++ End Deploy +++++"'
