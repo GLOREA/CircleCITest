@@ -154,6 +154,7 @@ gulp.task('CloudFormation', (done)=> {
 		}else{
 			console.log(data);
 			var exists = data.StackSummaries.some((element, index, array)=> {
+				console.log(data.StackSummaries[element]);
 				console.log('[ ' + element + ' ] ' + data.StackSummaries[element].StackName + ' == ' + stackName + ' ( ' + (data.StackSummaries[element].StackName == stackName) + ' )');
 				return data.StackSummaries[element].StackName == stackName;
 			});
