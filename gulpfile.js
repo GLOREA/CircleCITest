@@ -151,25 +151,26 @@ gulp.task('CloudFormation', (done)=> {
 		if(err){
 			console.log(err);
 			process.exit(1);
-		}else{
-			var exists = data.StackSummaries.some((element, index, array)=> {
-				return element.StackName == stackName;
-			});
-
-			return cloudFormation[(exists ? 'updateStack' : 'createStack')]({
-			// return cloudFormation.updateStack({
-				StackName: stackName,
-				// TODO: ローカルのテンプレートファイルを使う
-				TemplateBody: modifyCloudFormationTemplate('aws-template/gulptest.js')
-			}, (err, data)=> {
-				if(err){
-					console.log(err);
-					process.exit(1);
-					done();
-				}
-				console.log(data);
-				done();
-			});
 		}
+
+		console.log(data);
+		var exists = data.StackSummaries.some((element, index, array)=> {
+			return element.StackName == stackName;
+		});
+		console.log("Exists? : " + exists);
+		return cloudFormation[(exists ? 'updateStack' : 'createStack')]({
+		// return cloudFormation.updateStack({
+			StackName: stackName,
+			// TODO: ローカルのテンプレートファイルを使う
+			TemplateBody: modifyCloudFormationTemplate('aws-template/gulptest.js')
+		}, (err, data)=> {
+			if(err){
+				console.log(err);
+				process.exit(1);
+				done();
+			}
+			console.log(data);
+			done();
+		});
 	});
 });
