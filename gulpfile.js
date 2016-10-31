@@ -10,6 +10,7 @@ AWS.config.update({
 
 const bucketName = process.env['AWS_S3_BUCKET'];
 const gulpTempDir = process.env['GULP_TEMP_DIR'];
+const stackName = process.env['AWS_CLOUD_FORMATION_STACK'];
 
 gulp.task('testTask', (done)=> {
 	console.log(process.env);
@@ -141,7 +142,15 @@ gulp.task('CloudFormation', (done)=> {
 		apiVersion: '2010-05-15',
 		region: 'ap-northeast-1'
 	});
+	cloudFormation.waitFor('stackExists', { StackName: stackName }, (err, data)=> {
+		if(err){
+			console.log(err);
+		}else{
+			console.log(data);
+		}
+	});
 
+	/*
 	return cloudFormation.createStack({
 	// return cloudFormation.updateStack({
 		StackName: 'GulpTest',
@@ -156,7 +165,5 @@ gulp.task('CloudFormation', (done)=> {
 		console.log(data);
 		done();
 	});
+	*/
 });
-
-// 異常終了
-// process.exit(1);
