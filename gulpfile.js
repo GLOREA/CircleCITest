@@ -1,6 +1,7 @@
-const gulp = require('gulp');
-const fs = require('fs');
 const AWS = require('aws-sdk');
+const fs = require('fs');
+const gulp = require('gulp');
+const path = require('path');
 
 AWS.config.update({
 	accessKeyId: process.env['AWS_S3_ACCESS_KEY_ID'],
@@ -62,7 +63,6 @@ gulp.task('Archive', (done)=> {
 });
 
 gulp.task('S3Upload', (done)=> {
-	const path = require('path');
 	const q = require('q');
 	var bucket = new AWS.S3({ params: { Bucket: bucketName } });
 
@@ -82,7 +82,7 @@ gulp.task('S3Upload', (done)=> {
 
 				bucket.putObject(
 					{
-						Key: gulpTempDir + '/' + filePath,
+						Key: path.join(gulpTempDir, filePath),
 						Body: fs.readFileSync(path.join(basePath, filePath))
 					},
 					(err, data)=> {
@@ -118,7 +118,7 @@ const modifyCloudFormationTemplate = (filePath)=> {
 		for(var key in params){
 			if(!(params[key] instanceof Object) || params[key] instanceof Array){
 				if(key =='Key' || key == 'S3Key'){
-					params[key] = gulpTempDir + '/' + params[key];
+					params[key] = path.join(gulpTempDir, params[key]);
 					continue;
 				}
 				if(key == 'Bucket' || key =='S3Bucket'){
@@ -150,7 +150,7 @@ gulp.task('CloudFormation', (done)=> {
 	}, (err, data)=> {
 		if(err){
 			console.log(err);
-			throw 'しっぱい';
+			process.exit(1);
 			done();
 		}
 		console.log(data);
