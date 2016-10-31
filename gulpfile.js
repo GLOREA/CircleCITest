@@ -3,15 +3,16 @@ const fs = require('fs');
 const gulp = require('gulp');
 const path = require('path');
 
-AWS.config.update({
-	accessKeyId: process.env['AWS_S3_ACCESS_KEY_ID'],
-	secretAccessKey: process.env['AWS_S3_SECRET_ACCESS_KEY']
-});
-
 const bucketName = process.env['AWS_S3_BUCKET'];
 const gulpTempDir = process.env['GULP_TEMP_DIR'];
 const stackName = process.env['AWS_CLOUD_FORMATION_STACK'];
 const region = process.env['AWS_REGION'];
+
+AWS.config.update({
+	accessKeyId: process.env['AWS_S3_ACCESS_KEY_ID'],
+	secretAccessKey: process.env['AWS_S3_SECRET_ACCESS_KEY'],
+	region: region
+});
 
 gulp.task('testTask', (done)=> {
 	console.log(process.env);
