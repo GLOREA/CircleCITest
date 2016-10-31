@@ -147,7 +147,7 @@ gulp.task('CloudFormation', (done)=> {
 		region: region
 	});
 
-	cloudFormation.deleteStacks({ StackName: stackName }, (err, data)=> {
+	cloudFormation.deleteStack({ StackName: stackName }, (err, data)=> {
 		if(err){ console.log(err); } // 特に処理は止めない
 
 		return cloudFormation.createStack({
