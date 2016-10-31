@@ -124,7 +124,7 @@ const modifyCloudFormationTemplate = (filePath)=> {
 					continue;
 				}
 				if(key == 'Bucket' || key =='S3Bucket'){
-					params[key] = bucket;
+					params[key] = bucketName;
 					continue;
 				}
 			}else{
