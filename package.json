@@ -17,6 +17,8 @@
   },
   "homepage": "https://github.com/GLOREA/CircleCITest#readme",
   "devDependencies": {
-    "gulp": "^3.9.1"
+    "archiver": "^1.1.0",
+    "gulp": "^3.9.1",
+    "q": "^1.4.1"
   }
 }

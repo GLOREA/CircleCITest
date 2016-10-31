@@ -2,8 +2,17 @@ const gulp = require('gulp');
 const fs = require('fs');
 const AWS = require('aws-sdk');
 
-const bucket = 'com.yamaha.ses.soil.dev'; // 環境変数等から取得する
-const gulpTempDir = 'gulp_temp';
+AWS.config.update({
+	accessKeyId: process.env['AWS_S3_ACCESS_KEY_ID'],
+	secretAccessKey: process.env['AWS_S3_SECRET_ACCESS_KEY']
+});
+
+const bucket = process.env['AWS_S3_BUCKET'];
+const gulpTempDir = process.env['GULP_TEMP_DIR'];
+
+gulp.task('testTask', (done)=> {
+	console.log(process.env);
+});
 
 gulp.task('Archive', (done)=> {
 	var archive = require('archiver').create('zip', {});
