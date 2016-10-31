@@ -146,11 +146,14 @@ gulp.task('CloudFormation', (done)=> {
 	cloudFormation.waitFor('stackExists', { StackName: stackName }, (err, data)=> {
 		if(err){
 			console.log(err);
+			done();
 		}else{
 			console.log(data);
+			done();
 		}
 	});
 
+	return;
 	/*
 	return cloudFormation.createStack({
 	// return cloudFormation.updateStack({
