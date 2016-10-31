@@ -143,31 +143,29 @@ gulp.task('CloudFormation', (done)=> {
 		apiVersion: '2010-05-15',
 		region: region
 	});
+
 	cloudFormation.listStacks({}, (err, data)=> {
 		if(err){
 			console.log(err);
-			done();
+			process.exit(1);
 		}else{
 			console.log(data);
-			done();
-		}
-	});
+			// done();
 
-	return;
-	/*
-	return cloudFormation.createStack({
-	// return cloudFormation.updateStack({
-		StackName: 'GulpTest',
-		// TODO: ローカルのテンプレートファイルを使う
-		TemplateBody: modifyCloudFormationTemplate('aws-template/gulptest.js')
-	}, (err, data)=> {
-		if(err){
-			console.log(err);
-			process.exit(1);
-			done();
+			return cloudFormation.createStack({
+			// return cloudFormation.updateStack({
+				StackName: stackName,
+				// TODO: ローカルのテンプレートファイルを使う
+				TemplateBody: modifyCloudFormationTemplate('aws-template/gulptest.js')
+			}, (err, data)=> {
+				if(err){
+					console.log(err);
+					process.exit(1);
+					done();
+				}
+				console.log(data);
+				done();
+			});
 		}
-		console.log(data);
-		done();
 	});
-	*/
 });
