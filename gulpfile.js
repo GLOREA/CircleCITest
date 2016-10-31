@@ -88,8 +88,8 @@ gulp.task('S3Upload', (done)=> {
 					(err, data)=> {
 						if(err){
 							// TODO: 非同期でのエラー処理方法を考える
-							// throw err;
-					        d.resolve(err);
+							throw err;
+							d.resolve(err);
 						}
 				        d.resolve();
 					}
@@ -104,6 +104,10 @@ gulp.task('S3Upload', (done)=> {
 		//
 		done();
 		return;
+	}, (err)=> {
+		// 異常終了
+		console.log(err);
+		process.exit(1);
 	});
 });
 
