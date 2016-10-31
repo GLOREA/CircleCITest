@@ -7,7 +7,7 @@ AWS.config.update({
 	secretAccessKey: process.env['AWS_S3_SECRET_ACCESS_KEY']
 });
 
-const bucket = process.env['AWS_S3_BUCKET'];
+const bucketName = process.env['AWS_S3_BUCKET'];
 const gulpTempDir = process.env['GULP_TEMP_DIR'];
 
 gulp.task('testTask', (done)=> {
@@ -64,7 +64,7 @@ gulp.task('Archive', (done)=> {
 gulp.task('S3Upload', (done)=> {
 	const path = require('path');
 	const q = require('q');
-	var bucket = new AWS.S3({ params: { Bucket: bucket } });
+	var bucket = new AWS.S3({ params: { Bucket: bucketName } });
 
     // UpLoadの部分は、プロミスを利用しての並行処理をする必要がある
 	var s3Upload = (parentPath, basePath)=> {
