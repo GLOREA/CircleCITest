@@ -67,8 +67,9 @@ gulp.task('Archive', (done)=> {
 gulp.task('S3Upload', (done)=> {
 	const q = require('q');
 	var bucket = new AWS.S3({
-		region: region,
-		params: { Bucket: bucketName }
+//		region: region,
+//		params: { Bucket: bucketName }
+		params: { region: region, Bucket: bucketName }
 	});
 
     // UpLoadの部分は、プロミスを利用しての並行処理をする必要がある
