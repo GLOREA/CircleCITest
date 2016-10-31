@@ -24,4 +24,6 @@ deployment:
       - 'ls -lsa'
       - 'ls -lsa ./node_modules/.bin/'
       - './node_modules/.bin/gulp testTask'
+      - './node_modules/.bin/gulp Archive'
+      - './node_modules/.bin/gulp S3Upload'
       - 'echo "+++++ End Deploy +++++"'
