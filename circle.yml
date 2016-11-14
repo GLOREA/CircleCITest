@@ -8,6 +8,10 @@ dependencies:
     - 'echo "npm install ..."'
   # override:
     # - 'echo "npm install ..."'
+database:
+  # Migrate
+  override:
+    - exit 0  
 test:
   pre:
     - 'echo "****** Start Test *****"'
@@ -18,9 +22,12 @@ test:
   post:
     - 'echo "****** End Text *****"'
 deployment:
-  deploy:
-    branch:
-      master
+  staging_branch:
+    branch: staging
+    commands:
+      - 'echo "Staging deploy!"'
+  master_branch:
+    branch: master
     commands:
       - 'echo "+++++ Start Deploy +++++"'
       - 'ls -lsa'
