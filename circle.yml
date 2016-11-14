@@ -12,6 +12,8 @@ test:
   pre:
     - 'echo "****** Start Test *****"'
   override:
+    - 'git branch'
+    - 'git merge master'
     - 'echo "test"'
   post:
     - 'echo "****** End Text *****"'
