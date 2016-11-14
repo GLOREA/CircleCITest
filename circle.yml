@@ -22,9 +22,9 @@ test:
   post:
     - 'echo "****** End Text *****"'
 deployment:
-  staging:
+  staging_branch:
     branch: staging
-  master:
+  master_branch:
     branch: master
     commands:
       - 'echo "+++++ Start Deploy +++++"'
