@@ -8,6 +8,7 @@ const path = require('path');
 const bucketName = process.env['AWS_S3_BUCKET'];
 const gulpTempDir = process.env['GULP_TEMP_DIR'];
 const stackName = process.env['AWS_CLOUD_FORMATION_STACK'];
+const cloudFormationFileName = process.env['AWS_CLOUD_FORMATION_TEMP_FILE'];
 const region = process.env['AWS_REGION'];
 
 AWS.config.update({
@@ -155,7 +156,7 @@ gulp.task('CloudFormation', (done)=> {
 		// return cloudFormation.updateStack({
 			StackName: stackName,
 			// TODO: ローカルのテンプレートファイルを使う
-			TemplateBody: modifyCloudFormationTemplate('aws-template/gulptest.js')
+			TemplateBody: modifyCloudFormationTemplate(path.join('aws-template', cloudFormationFileName))
 		}, (err, data)=> {
 			if(err){
 				console.log(err);
