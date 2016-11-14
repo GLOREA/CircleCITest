@@ -20,7 +20,7 @@ test:
 deployment:
   deploy:
     branch:
-      deploy-test
+      master
     commands:
       - 'echo "+++++ Start Deploy +++++"'
       - 'ls -lsa'
