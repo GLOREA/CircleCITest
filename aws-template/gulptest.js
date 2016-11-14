@@ -10,7 +10,7 @@
 		            "Statement": [
 		            	{
 		                	"Effect": "Allow",
-		                	"Principal": { "lambda.amazonaws.com" },
+		                	"Principal": "lambda.amazonaws.com",
 		                	"Action": ["sts:AssumeRole"]
 		            	}
 		            ]
