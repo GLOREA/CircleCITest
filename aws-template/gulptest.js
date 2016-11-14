@@ -16,10 +16,9 @@
 		            ]
 		        },
 		        "Path": "/",
-		        "Policies": ['cp_iwai_s3_user-lambda-test-policy']
+		        "Policies": ["cp_iwai_s3_user-lambda-test-policy"]
 		    }
 		},
-
 		"UserLambdaGulpTest": {
 			"Type": "AWS::Lambda::Function",
 			"Properties": {
