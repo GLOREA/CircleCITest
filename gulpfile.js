@@ -1,3 +1,5 @@
+'use strict';
+
 const AWS = require('aws-sdk');
 const fs = require('fs');
 const gulp = require('gulp');
@@ -160,7 +162,6 @@ gulp.task('CloudFormation', (done)=> {
 				process.exit(1);
 				done();
 			}
-			console.log(data);
 			done();
 		});
 	});
