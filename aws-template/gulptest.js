@@ -2,6 +2,24 @@
 	"AWSTemplateFormatVersion": "2010-09-09",
 	"Description": "Gulp Soil API Version 0.1",
 	"Resources": {
+		"LambdaRole": {
+		    "Type": "AWS::IAM::Role",
+		    "Properties": {
+		        "AssumeRolePolicyDocument": {
+		            "Version": "2012-10-17",
+		            "Statement": [
+		            	{
+		                	"Effect": "Allow",
+		                	"Principal": { "lambda.amazonaws.com" },
+		                	"Action": ["sts:AssumeRole"]
+		            	}
+		            ]
+		        },
+		        "Path": "/",
+		        "Policies": ['cp_iwai_s3_user-lambda-test-policy']
+		    }
+		},
+
 		"UserLambdaGulpTest": {
 			"Type": "AWS::Lambda::Function",
 			"Properties": {
