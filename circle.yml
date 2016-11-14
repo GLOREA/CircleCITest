@@ -24,6 +24,8 @@ test:
 deployment:
   staging_branch:
     branch: staging
+    commands:
+      - 'echo "Staging deploy!"'
   master_branch:
     branch: master
     commands:
