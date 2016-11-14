@@ -12,13 +12,15 @@ test:
   pre:
     - 'echo "****** Start Test *****"'
   override:
+    - 'git branch'
+    - 'git merge master'
     - 'echo "test"'
   post:
     - 'echo "****** End Text *****"'
 deployment:
   deploy:
     branch:
-      master
+      deploy-test
     commands:
       - 'echo "+++++ Start Deploy +++++"'
       - 'ls -lsa'
